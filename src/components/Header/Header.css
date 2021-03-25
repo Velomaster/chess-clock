@@ -1,0 +1,30 @@
+.logo {
+    width: 35px;
+    height: 35px;
+    color: lemonchiffon;
+    padding-bottom: 8px;
+}
+
+a.navbar-brand {
+    font-size: 25px;
+    font-weight: 400;
+    font-family: 'Cinzel', serif;    
+
+}
+
+.mr-auto Nav.Link  {
+    justify-content: end;
+}
+
+#settings-button {
+    margin-right: 10px;
+}
+
+#settings-button:disabled {
+    cursor: not-allowed;
+}
+
+#button {
+    outline: none;
+}
+

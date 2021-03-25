@@ -1,0 +1,26 @@
+.PlayersName {
+    margin-top: 25px;
+    font-size: 45px;
+    text-align: center;
+}
+
+.PlayersColor {
+    margin-top: 60px;
+    text-align: center;
+   
+}
+
+.Timer {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding: 10px 10px;
+    font-family: 'Saira Condensed', sans-serif;
+    font-size: 85px;
+    text-align: center;
+    /* position: fixed; */
+    font-weight: 200;
+}
+
+.PlayersButton {
+    text-align: center;
+}
