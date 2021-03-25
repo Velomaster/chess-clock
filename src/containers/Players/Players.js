@@ -23,7 +23,6 @@ class Players extends Component {
             playerOneTime: props.initialTimer * 60,
             playerTwoTime: props.initialTimer * 60,
             playerOneColor: props.playerOne.color,
-            timeout: false
         };
     }
 
@@ -47,22 +46,25 @@ class Players extends Component {
     }
 
     componentDidMount() {
-        let timeLeftVar = this.secondsToTime(this.state.playerOneTime);
+        let timeLeftVar = this.secondsToTime(this.props.initialTimer * 60);
         this.setState({ playerOneRemainingTime: timeLeftVar });
         this.setState({ playerTwoRemainingTime: timeLeftVar });
         this.startGame();
         this.countDown();
     }
 
+    componentWillUnmount() {
+        clearInterval(this.timerIdPlayerOne);
+        clearInterval(this.timerIdPlayerTwo);
+    }
+
     startGame() {
         this.activePlayer = this.state.playerOneColor === "white" ? 'playerOne' : 'playerTwo'; // playerOne | playerTwo
         this.startTimer();
-
     }
 
     startTimer() {
         this.setState({activePlayer: this.activePlayer}); // Needed only for disabling buttons a little faster
-
         if (this.activePlayer === 'playerOne' && this.state.playerOneTime > 0) {
             this.timerIdPlayerOne = setInterval(this.countDown.bind(this), 1000);
         } else if (this.activePlayer === 'playerTwo' && this.state.playerTwoTime > 0) {
@@ -78,8 +80,13 @@ class Players extends Component {
                 playerOneRemainingTime: this.secondsToTime(seconds),
                 playerOneTime: seconds,
             });
+
             if (seconds === 0) { 
                 clearInterval(this.timerIdPlayerOne);
+            }
+            //time is over fired
+            if (this.state.playerOneTime === 0) {
+                this.props.timeOver(this.state.activePlayer)
             }
 
         } else if (this.activePlayer === 'playerTwo') {
@@ -92,7 +99,10 @@ class Players extends Component {
              if (seconds === 0) { 
                  clearInterval(this.timerIdPlayerTwo);
              }
-
+            //time is over fired
+             if (this.state.playerTwoTime === 0) {
+                this.props.timeOver(this.state.activePlayer)
+            }
         }
     }
 
@@ -111,8 +121,6 @@ class Players extends Component {
         this.pauseTimer(this.timerIdPlayerTwo);
         this.startTimer();
     }
-
-    
 
     render() {
         const iconBlack = {
