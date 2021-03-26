@@ -19,13 +19,17 @@ class Settings extends Component {
     }
 
     colorChangeHandler = (event) => {
-        const {name: playerName, value: colorName} = event.target;
+        // Getting color and name from data attributes
+        const colorName = event.target.getAttribute("data-color");
+        const playerName = event.target.getAttribute("data-name");
+
         const otherPlayer = playerName === "playerOne" ? "playerTwo" : "playerOne";
         const otherColor = colorName === "black" ? "white" : "black";
         const newState = {
             [otherPlayer]: {...this.state[otherPlayer], color: otherColor},
             [playerName]: {...this.state[playerName], color: colorName}
         }
+        
         this.setState(newState);
     }
 
@@ -66,32 +70,31 @@ class Settings extends Component {
                                     plaintext /></Col>
                         </Form.Group>
                         <Form.Group as={Row} className="justify-content-center">
-                            <Form.Label column xs={2} id="formLabel">Color:</Form.Label>
-                                <Col sm="6">{['radio'].map((type) => (
-                                    <div  key={`inline-${type}`} className="align-items-center">
-                                        <Form.Check 
-                                            onChange={this.colorChangeHandler}
-                                            style={{color: "wheat"}} 
-                                            checked={this.state.playerOne.color === "white" ? "checked" : null} 
-                                            inline 
-                                            label="White" 
-                                            value="white"
-                                            name="playerOne" 
-                                            type={type} 
-                                            id={`inline-${type}-1`} />
-                                        <Form.Check 
-                                            onChange={this.colorChangeHandler}
-                                            style={{color: "wheat"}} 
-                                            checked={this.state.playerOne.color === "black" ? "checked" : null} 
-                                            inline 
-                                            label="Black" 
-                                            value="black"
-                                            name="playerOne"  
-                                            type={type} 
-                                            id={`inline-${type}-2`} />
-                                    </div>
-                                    ))}
-                                </Col>
+                        <Form.Label column xs={2} id="formLabel">Color:</Form.Label>
+                        <Col sm="6">
+                            <Form.Check 
+                                onChange={this.colorChangeHandler}
+                                style={{color: "wheat"}} 
+                                checked={this.state.playerOne.color === "white" ? true : false} 
+                                inline 
+                                label="White" 
+                                id="playerOne-white"
+                                data-name="playerOne"
+                                data-color="white"
+                                type="radio"
+                            />
+                            <Form.Check 
+                                onChange={this.colorChangeHandler}
+                                style={{color: "wheat"}} 
+                                checked={this.state.playerOne.color === "black" ? true : false}
+                                inline 
+                                label="Black"
+                                id="playerOne-black"
+                                data-name="playerOne"
+                                data-color="black"
+                                type="radio"
+                            />
+                        </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="justify-content-center">
                             <Form.Label column xs={2} id="formLabel">Player Two:</Form.Label>
@@ -103,35 +106,35 @@ class Settings extends Component {
                                     name="playerTwo" 
                                     type="text" 
                                     placeholder="Player Two Name" 
-                                    plaintext/></Col>
+                                    plaintext/>
+                            </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="justify-content-center">
-                            <Form.Label column xs={2} id="formLabel">Color:</Form.Label>
-                                <Col sm="6">{['radio'].map((type) => (
-                                    <div key={`inline-${type}`} >
-                                        <Form.Check 
-                                            onChange={this.colorChangeHandler} 
-                                            style={{color: "wheat"}} 
-                                            checked={this.state.playerTwo.color === "white" ? "checked" : null} 
-                                            inline 
-                                            label="White" 
-                                            value="white"
-                                            name="playerTwo" 
-                                            type={type} 
-                                            id={`inline-${type}-1`} />
-                                        <Form.Check 
-                                            onChange={this.colorChangeHandler} 
-                                            style={{color: "wheat"}} 
-                                            checked={this.state.playerTwo.color === "black" ? "checked" : null} 
-                                            inline 
-                                            label="Black" 
-                                            value="black"
-                                            name="playerTwo"  
-                                            type={type} 
-                                            id={`inline-${type}-2`} />
-                                    </div>
-                                    ))}
-                                </Col>
+                        <Form.Label column xs={2} id="formLabel">Color:</Form.Label>
+                        <Col sm="6">
+                            <Form.Check 
+                                onChange={this.colorChangeHandler}
+                                style={{color: "wheat"}} 
+                                checked={this.state.playerTwo.color === "white" ? true : false} 
+                                inline 
+                                label="White"
+                                id="playerTwo-white"
+                                data-name="playerTwo"
+                                data-color="white"
+                                type="radio"
+                            />
+                            <Form.Check 
+                                onChange={this.colorChangeHandler}
+                                style={{color: "wheat"}} 
+                                checked={this.state.playerTwo.color === "black" ? true : false}
+                                inline 
+                                label="Black"
+                                id="playerTwo-black"
+                                data-name="playerTwo"
+                                data-color="black"
+                                type="radio"
+                            />
+                        </Col>
                         </Form.Group>
                         <Form.Group as={Row}  className="justify-content-center">
                             <Form.Label column xs={2} id="formLabel">Set Timer:</Form.Label>

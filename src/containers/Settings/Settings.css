@@ -32,3 +32,8 @@
     border-bottom: 1px solid wheat;
 }
 
+input[type="radio"],
+label.form-check-label,
+.form-check.form-check-inline {
+    cursor: pointer;
+}
