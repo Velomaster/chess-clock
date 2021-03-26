@@ -4,5 +4,7 @@
 }
 
 .image {
-    max-height: 200px;
+    height: 200px;
+    object-position: 50% 57%;
+    object-fit: cover;
 }
