@@ -17,7 +17,7 @@ class Players extends Component {
         super(props);
 
         this.state = {
-            activePlayer: '', // Needed only for disabling buttons a little faster
+            activePlayer: '',
             playerOneRemainingTime: {},
             playerTwoRemainingTime: {},
             playerOneTime: props.initialTimer * 60,
@@ -125,18 +125,22 @@ class Players extends Component {
     render() {
         const iconBlack = {
             color: "black",
+            border: "1px solid grey",
+            borderRadius: "5px",
             background: "lightGrey",
-            height: "55px",
-            width: "55px",
-            padding: "5px"
+            height: "75px",
+            width: "75px",
+            padding: "10px"
         }
     
         const iconWhite = {
             color: "white",
+            border: "1px solid grey",
+            borderRadius: "5px",
             background: "lightGrey",
-            height: "55px",
-            width: "55px",
-            padding: "5px"
+            height: "75px",
+            width: "75px",
+            padding: "10px"
         }
 
         return (
