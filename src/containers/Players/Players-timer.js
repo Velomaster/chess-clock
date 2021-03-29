@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { FaChess } from 'react-icons/fa'
+import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import Timer from '../Timer/Timer';
+import './Players.css';
 
-class Timer extends Component {
-
-    //timer IDs
+class Players extends Component {
     timerIdPlayerOne;
     timerIdPlayerTwo;
 
@@ -73,25 +75,59 @@ class Timer extends Component {
         clearInterval(timerIdPlayerOne)
     }
 
+    buttonClicked() {
+        this.startTimer()
+    }
+
     render() {
+        const iconBlack = {
+            color: "black",
+            border: "1px solid grey",
+            borderRadius: "5px",
+            background: "lightGrey",
+            height: "75px",
+            width: "75px",
+            padding: "10px"
+        }
+    
+        const iconWhite = {
+            color: "white",
+            border: "1px solid grey",
+            borderRadius: "5px",
+            background: "lightGrey",
+            height: "75px",
+            width: "75px",
+            padding: "10px"
+        }
+
         return (
             <div>
-                <Row>
-                    <Col>{this.state.playerOneRemainingTime.m}:{this.state.playerOneRemainingTime.s}</Col>  
-                </Row>
-                <Row>
-                    <Col> 
-                        <Button 
-                            onClick={this.props.buttonClicked}
-                            style={{width: "200px"}} 
-                            variant="info"
-                            // disabled={this.state.activePlayer === 'playerOne'}
-                            >SET</Button>
-                    </Col>
-                </Row>
+                <Container fluid="sm" >
+                    <Row className="PlayersName">
+                        <Col>{this.props.playerOne.name}</Col>
+                        <Col>{this.props.playerTwo.name}</Col>
+                    </Row>
+                    <Row className="PlayersColor">
+                        <Col ><FaChess style={this.props.playerOne.color === "white" ? iconWhite : iconBlack} /></Col>
+                        <Col><FaChess style={this.props.playerTwo.color === "white" ? iconWhite : iconBlack}/></Col>
+                    </Row>
+                    <Row className="Timer">
+                        <Col>
+                            <Timer
+                                initialTimer={this.props.initialTimer} 
+                                startTimer={this.buttonOneClicked}
+                                activePlayer={this.props.playerTwo}
+                                buttonClicked={this.buttonClicked}
+                                />
+                        </Col>
+                        <Col>
+                            <Timer />
+                        </Col>
+                    </Row>
+                </Container>
             </div>
         )
     }
 }
 
-export default Timer;
+export default Players;

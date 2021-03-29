@@ -3,8 +3,7 @@ import Header from './components/Header/Header';
 import Players from '../src/containers/Players/Players';
 import Settings from '../src/containers/Settings/Settings';
 import MainPage from '../src/components/MainPage/MainPage';
-import Collapse from '@material-ui/core/Collapse';
-import Paper from '@material-ui/core/Paper';
+import Collapse from 'react-bootstrap/Collapse';
 import TimeOver from './components/TimeOver/TimeOver';
 import Modal from './components/Modal/Modal';
 import './App.css';
@@ -82,16 +81,14 @@ class  App extends Component {
         gameStarted={this.state.gameStarted}
         buttonEndClicked={this.buttonEndHandler}
         />
-      <Collapse in={this.state.showSettings}> 
-        {this.state.showSettings ? 
-          <Paper elevation={8}>
-            <Settings 
-              submitChanges={this.applyChanges} 
-              playerOne={this.state.playerOne} 
-              playerTwo={this.state.playerTwo} 
-              initialTimer={this.state.initialTimer} /> </Paper>: 
-              null}
-          
+      <Collapse in={this.state.showSettings}>  
+        <div>
+          <Settings 
+            submitChanges={this.applyChanges} 
+            playerOne={this.state.playerOne} 
+            playerTwo={this.state.playerTwo} 
+            initialTimer={this.state.initialTimer} /> 
+        </div>
       </Collapse>
       <Modal 
         timeout={this.state.timeout} 
@@ -102,7 +99,8 @@ class  App extends Component {
                 openSettings={this.settingsOnClickHandler} />
       </Modal>
       {!this.state.gameStarted ? 
-        <MainPage /> : 
+        <MainPage
+          initialTimer={this.state.initialTimer} /> : 
         <Players 
           playerOne={this.state.playerOne} 
           playerTwo={this.state.playerTwo}

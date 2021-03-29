@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 
 import './MainPage.css';
 
-const MainPage = () => {
+const MainPage = (props) => {
     return (
         <Container >
             <h1 className="justify-content-center">SIMPLE CHESS CLOCK</h1>

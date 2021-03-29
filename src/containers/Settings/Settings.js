@@ -52,13 +52,17 @@ class Settings extends Component {
         this.setState({showSettings: false})
     }
 
+    validateForm =() => {
+
+    }
+
     render() {
 
         return (
             <div className="Settings">
                 <Container fluid="sm">
-                    <Form onSubmit={e => e.preventDefault()}>
-                        <Form.Group as={Row} className="justify-content-center">
+                    <Form onSubmit={e => e.preventDefault()} noValidate>
+                        <Form.Group as={Row} isIndavlid className="justify-content-center">
                             <Form.Label column xs={2} id="formLabel">Player One:</Form.Label>
                             <Col sm="6">
                                 <Form.Control 
@@ -67,35 +71,38 @@ class Settings extends Component {
                                     value={this.state.playerOne.name} 
                                     name="playerOne"
                                     placeholder="Player One Name" 
-                                    plaintext /></Col>
+                                    required
+                                    plaintext />
+                                <Form.Control.Feedback type="invalid">Please choose player's name</Form.Control.Feedback>
+                            </Col>
                         </Form.Group>
-                        <Form.Group as={Row} className="justify-content-center">
-                        <Form.Label column xs={2} id="formLabel">Color:</Form.Label>
-                        <Col sm="6">
-                            <Form.Check 
-                                onChange={this.colorChangeHandler}
-                                style={{color: "wheat"}} 
-                                checked={this.state.playerOne.color === "white" ? true : false} 
-                                inline 
-                                label="White" 
-                                id="playerOne-white"
-                                data-name="playerOne"
-                                data-color="white"
-                                type="radio"
-                            />
-                            <Form.Check 
-                                onChange={this.colorChangeHandler}
-                                style={{color: "wheat"}} 
-                                checked={this.state.playerOne.color === "black" ? true : false}
-                                inline 
-                                label="Black"
-                                id="playerOne-black"
-                                data-name="playerOne"
-                                data-color="black"
-                                type="radio"
-                            />
-                        </Col>
-                        </Form.Group>
+                        <Form.Group as={Row} hasValidation className="justify-content-center">
+                            <Form.Label column xs={2} id="formLabel">Color:</Form.Label>
+                            <Col sm="6" >
+                                <Form.Check 
+                                    onChange={this.colorChangeHandler}
+                                    style={{color: "wheat"}} 
+                                    checked={this.state.playerOne.color === "white" ? true : false} 
+                                    inline 
+                                    label="White" 
+                                    id="playerOne-white"
+                                    data-name="playerOne"
+                                    data-color="white"
+                                    type="radio"
+                                />
+                                <Form.Check 
+                                    onChange={this.colorChangeHandler}
+                                    style={{color: "wheat"}} 
+                                    checked={this.state.playerOne.color === "black" ? true : false}
+                                    inline 
+                                    label="Black"
+                                    id="playerOne-black"
+                                    data-name="playerOne"
+                                    data-color="black"
+                                    type="radio"
+                                />
+                            </Col>
+                            </Form.Group>
                         <Form.Group as={Row} className="justify-content-center">
                             <Form.Label column xs={2} id="formLabel">Player Two:</Form.Label>
                             <Col sm="6">
@@ -106,35 +113,37 @@ class Settings extends Component {
                                     name="playerTwo" 
                                     type="text" 
                                     placeholder="Player Two Name" 
+                                    required
                                     plaintext/>
+                                <Form.Control.Feedback type="invalid">Please choose player's name</Form.Control.Feedback>
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="justify-content-center">
-                        <Form.Label column xs={2} id="formLabel">Color:</Form.Label>
-                        <Col sm="6">
-                            <Form.Check 
-                                onChange={this.colorChangeHandler}
-                                style={{color: "wheat"}} 
-                                checked={this.state.playerTwo.color === "white" ? true : false} 
-                                inline 
-                                label="White"
-                                id="playerTwo-white"
-                                data-name="playerTwo"
-                                data-color="white"
-                                type="radio"
-                            />
-                            <Form.Check 
-                                onChange={this.colorChangeHandler}
-                                style={{color: "wheat"}} 
-                                checked={this.state.playerTwo.color === "black" ? true : false}
-                                inline 
-                                label="Black"
-                                id="playerTwo-black"
-                                data-name="playerTwo"
-                                data-color="black"
-                                type="radio"
-                            />
-                        </Col>
+                            <Form.Label column xs={2} id="formLabel">Color:</Form.Label>
+                            <Col sm="6">
+                                <Form.Check 
+                                    onChange={this.colorChangeHandler}
+                                    style={{color: "wheat"}} 
+                                    checked={this.state.playerTwo.color === "white" ? true : false} 
+                                    inline 
+                                    label="White"
+                                    id="playerTwo-white"
+                                    data-name="playerTwo"
+                                    data-color="white"
+                                    type="radio"
+                                />
+                                <Form.Check 
+                                    onChange={this.colorChangeHandler}
+                                    style={{color: "wheat"}} 
+                                    checked={this.state.playerTwo.color === "black" ? true : false}
+                                    inline 
+                                    label="Black"
+                                    id="playerTwo-black"
+                                    data-name="playerTwo"
+                                    data-color="black"
+                                    type="radio"
+                                />
+                            </Col>
                         </Form.Group>
                         <Form.Group as={Row}  className="justify-content-center">
                             <Form.Label column xs={2} id="formLabel">Set Timer:</Form.Label>
@@ -145,7 +154,9 @@ class Settings extends Component {
                                     type="number" 
                                     placeholder="30"
                                     value={this.state.initialTimer} 
+                                    required
                                     plaintext/>
+                                <Form.Control.Feedback type="invalid">Please choose player's name</Form.Control.Feedback>
                                 <Form.Text className="text-muted">Put minuts here</Form.Text>
                             </Col>
                         </Form.Group>
