@@ -24,7 +24,7 @@ a.navbar-brand {
     cursor: not-allowed;
 }
 
-#button {
+#button:focus {
     outline: none;
 }
 

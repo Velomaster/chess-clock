@@ -72,11 +72,6 @@ class  App extends Component {
     this.setState({showGameResults: false, timeout: false})
   }
 
-  validate = () => {
-    console.log("fired");
-
-  }
-
   render() {
     return (
     <React.Fragment>
@@ -92,8 +87,7 @@ class  App extends Component {
             submitChanges={this.applyChanges} 
             playerOne={this.state.playerOne} 
             playerTwo={this.state.playerTwo} 
-            initialTimer={this.state.initialTimer}
-            validate={this.validate} /> 
+            initialTimer={this.state.initialTimer}/> 
         </div>
       </Collapse>
       <Modal 

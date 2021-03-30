@@ -1,13 +1,13 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import image from '../../assets/images/game-over.jpg'
 import "./TimeOver.css"
-
 
 const TimeOver = (props) => {
     return (
             <Card className="card" >
-                <Card.Img className="image" variant="top" src="https://img.wallpapersafari.com/desktop/1280/1024/39/12/1WKqbR.jpg" />
+                <Card.Img className="image" variant="top" src={image}/>
                 <Card.Body >
                     <Card.Title className="title"><b>{props.gameResults.winner} won!</b></Card.Title>
                     <Card.Text>

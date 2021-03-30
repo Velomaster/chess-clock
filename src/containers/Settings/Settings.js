@@ -70,8 +70,6 @@ class Settings extends Component {
 
     checkValidity(e) {
         if (!this.state.form.playerOne.valid || !this.state.form.playerTwo.valid || !this.state.form.timer.valid) {
-            console.log("fired")
-            e.stopPropagation();
             return;
         }
     }
@@ -116,7 +114,7 @@ class Settings extends Component {
             timerIsValid = false;
             updatedForm = {...updatedForm, timer: {...updatedForm.timer, valid: false, errorMessage: "Enter minutes"}}
             this.setState({form: updatedForm});
-        } else if (this.state.form.timer.time <= 0) {
+        } else if (this.state.form.timer.time < 1) {
             timerIsValid = false;
             updatedForm = {...updatedForm, timer: {...updatedForm.timer, valid: false, errorMessage: "Enter minimum 1 minute"}};
             this.setState({form: updatedForm});
@@ -130,7 +128,7 @@ class Settings extends Component {
         if (playerOneIsValid === false || playerTwoIsValid === false || timerIsValid === false) {
             return;
         }
-        //create object with new data and transfer to original sate
+        //create object with new data and transfer to original state
         const newData = {
             playerOne: {
                 name: this.state.form.playerOne.value,
@@ -255,7 +253,6 @@ class Settings extends Component {
                         <Form.Group as={Row} className="SettingsButton">
                             <Col>
                                 <Button 
-                                    // onClick={() => this.props.submitChanges(this.state)}
                                     type="submit" 
                                     variant="outline-light">
                                     Save</Button></Col>
