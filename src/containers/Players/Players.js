@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import './Players.css';
 
 class Players extends Component {
+    _isMounted = false;
     activePlayer; // 'playerOne' | 'playerTwo'
 
     // timer ids
@@ -40,7 +41,7 @@ class Players extends Component {
         let obj = {
             h: hours,
             m: minutes,
-            s: seconds
+            s: seconds,
         };
         return obj;
     }
@@ -51,16 +52,21 @@ class Players extends Component {
         this.setState({ playerTwoRemainingTime: timeLeftVar });
         this.startGame();
         this.countDown();
+        this._isMounted = true;
+        document.addEventListener("keydown", this.handleKey.bind(this));
     }
 
     componentWillUnmount() {
         clearInterval(this.timerIdPlayerOne);
         clearInterval(this.timerIdPlayerTwo);
+        this._isMounted = false;
+        document.removeEventListener("keydown", this.handleKey.bind(this));
     }
 
     startGame() {
         this.activePlayer = this.state.playerOneColor === "white" ? 'playerOne' : 'playerTwo'; // playerOne | playerTwo
         this.startTimer();
+        this._isMounted = true;
     }
 
     startTimer() {
@@ -122,6 +128,20 @@ class Players extends Component {
         this.startTimer();
     }
 
+    handleKey() {
+        if (this._isMounted) {
+                if (this.activePlayer === 'playerOne') {
+                    this.activePlayer = 'playerTwo';
+                    this.pauseTimer(this.timerIdPlayerOne);
+                    this.startTimer();
+                } else {
+                    this.activePlayer = 'playerOne';
+                    this.pauseTimer(this.timerIdPlayerTwo);
+                    this.startTimer();
+                }
+        }
+    }
+
     render() {
         const iconBlack = {
             color: "black",
@@ -162,9 +182,7 @@ class Players extends Component {
                         <Col>{this.state.playerTwoRemainingTime.h ? 
                         this.state.playerTwoRemainingTime.h + ":" + this.state.playerTwoRemainingTime.m + ":" + this.state.playerTwoRemainingTime.s : 
                         this.state.playerTwoRemainingTime.m + ":" + this.state.playerTwoRemainingTime.s}</Col>
-                    </Row>
-
-                    {this.props.gameStarted ? 
+                    </Row> 
                         <Row className="PlayersButton">
                             <Col>
                                 <Button
@@ -183,7 +201,7 @@ class Players extends Component {
                                     >SET</Button>
                             </Col>
                         </Row>
-                    : null }
+
                 </Container>
             </div>
         )

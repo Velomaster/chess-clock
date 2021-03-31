@@ -31,8 +31,9 @@ class  App extends Component {
     this.setState({showSettings: !toggle, timeout: false})
   }
 
-  buttonStartHandler = () => {
-    this.setState({gameStarted: true, timeout: false});
+  buttonStartHandler = (e) => {
+    e.target.blur();
+    this.setState({gameStarted: true, timeout: false, showSettings: false});
   }
 
   buttonEndHandler = () => {
@@ -107,6 +108,7 @@ class  App extends Component {
           initialTimer={this.state.initialTimer}
           gameStarted={this.state.gameStarted}
           timeOver={this.timeOver}
+          // removeKeyHandler={this.removeKeyHandler}
           />}
     </React.Fragment>
   )};

@@ -121,7 +121,6 @@ class Settings extends Component {
         } else {
             updatedForm = {...updatedForm, timer: {...updatedForm.timer, valid: true}};
             this.setState({form: updatedForm});
-
         }
 
         //validity check
@@ -252,10 +251,7 @@ class Settings extends Component {
                         </Form.Group>
                         <Form.Group as={Row} className="SettingsButton">
                             <Col>
-                                <Button 
-                                    type="submit" 
-                                    variant="outline-light">
-                                    Save</Button></Col>
+                                <Button type="submit" variant="outline-light">Save</Button></Col>
                         </Form.Group>
                     </Form>
                 </Container>
