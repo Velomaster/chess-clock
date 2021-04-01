@@ -7,7 +7,6 @@ import Button from 'react-bootstrap/Button';
 import './Players.css';
 
 class Players extends Component {
-    _isMounted = false;
     activePlayer; // 'playerOne' | 'playerTwo'
 
     // timer ids
@@ -25,6 +24,8 @@ class Players extends Component {
             playerTwoTime: props.initialTimer * 60,
             playerOneColor: props.playerOne.color,
         };
+
+        this.handleKey = this.handleKey.bind(this);
     }
 
     secondsToTime(secs) {
@@ -52,21 +53,18 @@ class Players extends Component {
         this.setState({ playerTwoRemainingTime: timeLeftVar });
         this.startGame();
         this.countDown();
-        this._isMounted = true;
-        document.addEventListener("keydown", this.handleKey.bind(this));
+        window.addEventListener("keydown", this.handleKey);
     }
 
     componentWillUnmount() {
         clearInterval(this.timerIdPlayerOne);
         clearInterval(this.timerIdPlayerTwo);
-        this._isMounted = false;
-        document.removeEventListener("keydown", this.handleKey.bind(this));
+        window.removeEventListener("keydown", this.handleKey);
     }
 
     startGame() {
         this.activePlayer = this.state.playerOneColor === "white" ? 'playerOne' : 'playerTwo'; // playerOne | playerTwo
         this.startTimer();
-        this._isMounted = true;
     }
 
     startTimer() {
@@ -129,16 +127,10 @@ class Players extends Component {
     }
 
     handleKey() {
-        if (this._isMounted) {
-                if (this.activePlayer === 'playerOne') {
-                    this.activePlayer = 'playerTwo';
-                    this.pauseTimer(this.timerIdPlayerOne);
-                    this.startTimer();
-                } else {
-                    this.activePlayer = 'playerOne';
-                    this.pauseTimer(this.timerIdPlayerTwo);
-                    this.startTimer();
-                }
+        if (this.activePlayer === 'playerOne') {
+            this.buttonOneClicked();
+        } else {
+            this.buttonTwoClicked();
         }
     }
 
