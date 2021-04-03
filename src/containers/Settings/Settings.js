@@ -167,8 +167,8 @@ class Settings extends Component {
                                     </Col>
                                 </Form.Group>
                                 <Form.Group as={Row}>
-                                    <Form.Label column xs="4" md="3" id="formLabel">Color:</Form.Label>
-                                    <Col xs="8" md="9" className="align-self-center">
+                                    <Form.Label column xs="4" md="4" lg="3" id="formLabel">Color:</Form.Label>
+                                    <Col xs="8" md="8" lg="9" className="align-self-center">
                                         <Form.Check 
                                             onChange={this.colorChangeHandler}
                                             style={{color: "wheat"}} 
@@ -192,56 +192,62 @@ class Settings extends Component {
 
                                     </Col>
                                 </Form.Group>
-                                <Form.Group className="justify-content-center">
-                                    <Form.Label id="formLabel">Player Two:</Form.Label>
-                                    <Form.Control 
-                                        onChange={this.playerNameHandler}
-                                        id="formInput" 
-                                        value={this.state.form.playerTwo.value}
-                                        name="playerTwo" 
-                                        type="text" 
-                                        placeholder="Player Two Name" 
-                                        isInvalid={!this.state.form.playerTwo.valid}
-                                        required
-                                        plaintext/>
-                                    <Form.Control.Feedback type="invalid">{this.state.form.playerTwo.errorMessage}</Form.Control.Feedback>
+                                <Form.Group as={Row} className="align-items-center">
+                                    <Form.Label column sm="12" md="4" lg="3" id="formLabel">Player Two:</Form.Label>
+                                    <Col sm="12" md="8" lg="9">
+                                        <Form.Control 
+                                            onChange={this.playerNameHandler}
+                                            id="formInput" 
+                                            value={this.state.form.playerTwo.value}
+                                            name="playerTwo" 
+                                            type="text" 
+                                            placeholder="Player Two Name" 
+                                            isInvalid={!this.state.form.playerTwo.valid}
+                                            required
+                                            plaintext/>
+                                        <Form.Control.Feedback type="invalid">{this.state.form.playerTwo.errorMessage}</Form.Control.Feedback>
+                                    </Col>
                                 </Form.Group>
-                                <Form.Group className="justify-content-center">
-                                    <Form.Label id="formLabel">Color:</Form.Label>
-                                    <Form.Check 
-                                        onChange={this.colorChangeHandler}
-                                        style={{color: "wheat"}} 
-                                        checked={this.state.form.playerTwo.color === "white" ? true : false} 
-                                        inline 
-                                        label="White"
-                                        id="playerTwo-white"
-                                        data-name="playerTwo"
-                                        data-color="white"
-                                        type="radio" />
-                                    <Form.Check 
-                                        onChange={this.colorChangeHandler}
-                                        style={{color: "wheat"}} 
-                                        checked={this.state.form.playerTwo.color === "black" ? true : false}
-                                        inline 
-                                        label="Black"
-                                        id="playerTwo-black"
-                                        data-name="playerTwo"
-                                        data-color="black"
-                                        type="radio"/>
+                                <Form.Group as={Row} >
+                                    <Form.Label column xs="4" md="4" lg="3" id="formLabel">Color:</Form.Label>
+                                    <Col xs="8" md="8" lg="9" className="align-self-center">
+                                        <Form.Check 
+                                            onChange={this.colorChangeHandler}
+                                            style={{color: "wheat"}} 
+                                            checked={this.state.form.playerTwo.color === "white" ? true : false} 
+                                            inline 
+                                            label="White"
+                                            id="playerTwo-white"
+                                            data-name="playerTwo"
+                                            data-color="white"
+                                            type="radio" />
+                                        <Form.Check 
+                                            onChange={this.colorChangeHandler}
+                                            style={{color: "wheat"}} 
+                                            checked={this.state.form.playerTwo.color === "black" ? true : false}
+                                            inline 
+                                            label="Black"
+                                            id="playerTwo-black"
+                                            data-name="playerTwo"
+                                            data-color="black"
+                                            type="radio"/>
+                                    </Col>
                                 </Form.Group>
-                                <Form.Group className="justify-content-center">
-                                <Form.Label id="formLabel">Set Timer:</Form.Label>
-                                    <Form.Control 
-                                        onChange={this.timerHandler}
-                                        id="formInput" 
-                                        type="number" 
-                                        placeholder="30"
-                                        value={this.state.form.timer.time} 
-                                        required
-                                        isInvalid={!this.state.form.timer.valid}
-                                        plaintext/>
-                                    <Form.Control.Feedback type="invalid">{this.state.form.timer.errorMessage}</Form.Control.Feedback>
-                                    <Form.Text className="text-muted">Put minuts here</Form.Text>
+                                <Form.Group as={Row} className="align-items-center">
+                                    <Form.Label column sm="12" md="4" lg="3" id="formLabel">Set Timer:</Form.Label>
+                                    <Col xs="12" md="8" lg="9" className="align-self-center">
+                                        <Form.Control 
+                                            onChange={this.timerHandler}
+                                            id="formInput" 
+                                            type="number" 
+                                            placeholder="30"
+                                            value={this.state.form.timer.time} 
+                                            required
+                                            isInvalid={!this.state.form.timer.valid}
+                                            plaintext/>
+                                        <Form.Control.Feedback type="invalid">{this.state.form.timer.errorMessage}</Form.Control.Feedback>
+                                        <Form.Text className="text-muted">Put minuts here</Form.Text>
+                                    </Col>
                                 </Form.Group>
                                 <Form.Group className="SettingsButton">
                                     <Button type="submit" variant="outline-light">Save</Button>

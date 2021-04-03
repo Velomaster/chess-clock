@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import Header from './components/Header/Header';
-import Players from '../src/containers/Players/Players';
-import Settings from '../src/containers/Settings/Settings';
-import MainPage from '../src/components/MainPage/MainPage';
 import Collapse from 'react-bootstrap/Collapse';
+import Header from './components/Header/Header';
+import Players from './containers/Players/Players';
+import Settings from './containers/Settings/Settings';
+import MainPage from './components/MainPage/MainPage';
 import TimeOver from './components/TimeOver/TimeOver';
 import Modal from './components/Modal/Modal';
+import Footer from './components/Footer/Footer';
 import './App.css';
 
 class  App extends Component {
@@ -110,6 +111,7 @@ class  App extends Component {
           timeOver={this.timeOver}
           // removeKeyHandler={this.removeKeyHandler}
           />}
+      <Footer/>
     </React.Fragment>
   )};
 };

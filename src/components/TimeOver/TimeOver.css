@@ -1,6 +1,7 @@
 .card {
     width: 800px;
     margin: 0 auto;
+    padding: inherit;
     border: 0;
 }
 
@@ -12,7 +13,7 @@
 
 .title {
     font-size: 35px;
-    margin-bottom: 25px;
+    margin-bottom: 1rem;
 }
 
 .settings {

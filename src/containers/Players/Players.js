@@ -156,17 +156,16 @@ class Players extends Component {
         }
 
         return (
-            <div>
-                <Container fluid="sm" >
-                    <Row className="PlayersName">
+                <Container >
+                    <Row className="PlayersName text-center">
                         <Col>{this.props.playerOne.name}</Col>
                         <Col>{this.props.playerTwo.name}</Col>
                     </Row>
                     <Row className="PlayersColor">
-                        <Col ><FaChess style={this.props.playerOne.color === "white" ? iconWhite : iconBlack} /></Col>
+                        <Col><FaChess style={this.props.playerOne.color === "white" ? iconWhite : iconBlack} /></Col>
                         <Col><FaChess style={this.props.playerTwo.color === "white" ? iconWhite : iconBlack}/></Col>
                     </Row>
-                    <Row className="Timer">
+                    <Row className="Timer text-center">
                         <Col>{this.state.playerOneRemainingTime.h ? 
                         this.state.playerOneRemainingTime.h + ":" + this.state.playerOneRemainingTime.m + ":" + this.state.playerOneRemainingTime.s : 
                         this.state.playerOneRemainingTime.m + ":" + this.state.playerOneRemainingTime.s}</Col>
@@ -175,27 +174,26 @@ class Players extends Component {
                         this.state.playerTwoRemainingTime.h + ":" + this.state.playerTwoRemainingTime.m + ":" + this.state.playerTwoRemainingTime.s : 
                         this.state.playerTwoRemainingTime.m + ":" + this.state.playerTwoRemainingTime.s}</Col>
                     </Row> 
-                        <Row className="PlayersButton">
-                            <Col>
-                                <Button
-                                    onClick={this.buttonOneClicked.bind(this)}
-                                    style={{width: "200px"}} 
-                                    variant="info"
-                                    disabled={this.state.activePlayer === 'playerTwo'}
-                                    >SET</Button>
-                            </Col>
-                            <Col>
-                                <Button 
-                                    onClick={this.buttonTwoClicked.bind(this)}
-                                    style={{width: "200px"}} 
-                                    variant="info"
-                                    disabled={this.state.activePlayer === 'playerOne'}
-                                    >SET</Button>
-                            </Col>
-                        </Row>
+                    <Row className="PlayersButton">
+                        <Col>
+                            <Button
+                                onClick={this.buttonOneClicked.bind(this)}
+                                // style={{width: "200px"}} 
+                                variant="info"
+                                disabled={this.state.activePlayer === 'playerTwo'}
+                                >SET</Button>
+                        </Col>
+                        <Col>
+                            <Button 
+                                onClick={this.buttonTwoClicked.bind(this)}
+                                style={{width: "200px"}} 
+                                variant="info"
+                                disabled={this.state.activePlayer === 'playerOne'}
+                                >SET</Button>
+                        </Col>
+                    </Row>
 
                 </Container>
-            </div>
         )
     }
 }

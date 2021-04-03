@@ -3,19 +3,12 @@
     padding: 35px;
 }
 
-.Settings form {
-    
-}
-
 .Settings button {
     width: 200px;
-    text-align: center;
-
 }
 
 .SettingsButton {
     text-align: center;
-
 }
 
 #formLabel {
@@ -29,6 +22,13 @@
     font-size: 25px;
     font-style: italic;
     border-bottom: 1px solid wheat;
+}
+
+#playerOne-black {
+    margin-left: 15px;
+}
+#playerTwo-black {
+    margin-left: 15px;
 }
 
 input[type="radio"],
