@@ -158,8 +158,8 @@ class Players extends Component {
         return (
                 <Container >
                     <Row className="PlayersName text-center">
-                        <Col>{this.props.playerOne.name}</Col>
-                        <Col>{this.props.playerTwo.name}</Col>
+                        <Col xs="6" sm="6">{this.props.playerOne.name}</Col>
+                        <Col xs="6" sm="6">{this.props.playerTwo.name}</Col>
                     </Row>
                     <Row className="PlayersColor">
                         <Col><FaChess style={this.props.playerOne.color === "white" ? iconWhite : iconBlack} /></Col>
@@ -178,7 +178,6 @@ class Players extends Component {
                         <Col>
                             <Button
                                 onClick={this.buttonOneClicked.bind(this)}
-                                // style={{width: "200px"}} 
                                 variant="info"
                                 disabled={this.state.activePlayer === 'playerTwo'}
                                 >SET</Button>
@@ -186,7 +185,6 @@ class Players extends Component {
                         <Col>
                             <Button 
                                 onClick={this.buttonTwoClicked.bind(this)}
-                                style={{width: "200px"}} 
                                 variant="info"
                                 disabled={this.state.activePlayer === 'playerOne'}
                                 >SET</Button>

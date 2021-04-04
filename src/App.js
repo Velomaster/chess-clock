@@ -109,9 +109,8 @@ class  App extends Component {
           initialTimer={this.state.initialTimer}
           gameStarted={this.state.gameStarted}
           timeOver={this.timeOver}
-          // removeKeyHandler={this.removeKeyHandler}
           />}
-      <Footer/>
+      {!this.state.gameStarted ? <Footer/> : null }
     </React.Fragment>
   )};
 };

@@ -1,7 +1,7 @@
 .card {
     width: 800px;
-    margin: 0 auto;
-    padding: inherit;
+    /* margin: 0 auto; */
+    padding: 0;
     border: 0;
 }
 
@@ -25,4 +25,11 @@
     text-decoration: none;
     color: #a9b0b6;
 
+}
+
+@media (max-width: 500px) {
+    .title {
+        font-size: 25px;
+        margin-bottom: 1rem;
+    }
 }

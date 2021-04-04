@@ -6,7 +6,7 @@ const Footer = () => {
     const year = new Date().getFullYear();
 
     return (
-        <footer>
+        <footer className="static-bottom">
             <p>Alexander Gudkov Technologies. All rights reserved ⓒ {year}</p>
         </footer>
     )

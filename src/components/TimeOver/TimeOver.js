@@ -11,7 +11,7 @@ const TimeOver = (props) => {
     return (
         <Container>
             <Row>
-                <Col className="d-flex justify-content-center">
+                <Col className="d-flex justify-content-center" style={{padding: "0"}}>
                     <Card className="card" >
                         <Card.Img className="image" variant="top" src={image}/>
                         <Card.Body >

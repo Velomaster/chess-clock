@@ -27,3 +27,39 @@
     width: 200px;
     height: 45px;
 }
+
+@media (max-width: 800px) {
+    .PlayersName {
+        font-size: 35px;
+    }
+
+    .Timer {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        padding: 10px 10px;
+        font-size: 65px;
+    }
+
+    .PlayersButton button{
+        width: 170px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 425px) {
+    .PlayersName {
+        font-size: 25px;
+    }
+
+    .Timer {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        padding: 10px 10px;
+        font-size: 55px;
+    }
+
+    .PlayersButton button{
+        width: 120px;
+        height: 35px;
+    }
+}
